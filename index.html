@@ -12,15 +12,26 @@
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
 	<script src="https://cdn.jsdelivr.net/npm/vue@2.7.13/dist/vue.js" defer></script> 
     <script src="js/script.js" defer></script>
+
+    <style>
+        [v-clock]{
+            display: none;
+        }
+    </style>
+
     <title>vue-boolzapp</title>
 </head>
 <body>
+    <!-- Background -->
     <div class="containerBack">
         <div class="bannerBack"></div>
     </div>
-    <div class="container main">
+    <!-- Container Applicazione -->
+    <div class="container main" id="root" v-clock>
 
+        <!-- Parte a sinistra -->
         <div class="containerLeft">
+
             <div class="profileBox">
                <div class="imgBox">
                     <img src="img/IMG_4127.JPG" alt="" class="avatar">
@@ -41,7 +52,6 @@
                         <a href="">Attiva le notifiche Desktop</a>
                    </div>
             </div>
-
             <div class="searchBox">
                 <div class="searchSection">
                     <i class="fa-solid fa-magnifying-glass" id="specialIcon"></i>
@@ -50,113 +60,25 @@
                 
             </div>
             
+            <!-- Lista chat -->
             <div class="listChat">              
-                <div class="chatPreview">
+                <div class="chatPreview" v-for="(obj, i) in contacts" >
                     <div class="imgBox">
                         <img src="img/Elon_Musk_Royal_Society_(crop2).jpg" alt="" class="avatar">                      
                    </div>
                    <div class="chatName">
-                        <div>Elon Musk</div>
-                        <div class="messagePreview">Il razzo è pronto</div>
+                        <div class="nameSection">
+                            <div>{{ obj.name }}</div>
+                            <div class="messagePreview">12:00</div>
+                        </div>
+                        <div class="messagePreview">{{ obj.messages[obj.messages.length - 1].message }}</div>
                    </div>
                 </div>
-                <div class="chatPreview">
-                    <div class="imgBox">
-                        <img src="img/Elon_Musk_Royal_Society_(crop2).jpg" alt="" class="avatar">                      
-                   </div>
-                   <div class="chatName">
-                        <div>Elon Musk</div>
-                        <div class="messagePreview">Il razzo è pronto</div>
-                   </div>
-                </div>
-                <div class="chatPreview">
-                    <div class="imgBox">
-                        <img src="img/Elon_Musk_Royal_Society_(crop2).jpg" alt="" class="avatar">                      
-                   </div>
-                   <div class="chatName">
-                        <div>Elon Musk</div>
-                        <div class="messagePreview">Il razzo è pronto</div>
-                   </div>
-                </div>
-                <div class="chatPreview">
-                    <div class="imgBox">
-                        <img src="img/Elon_Musk_Royal_Society_(crop2).jpg" alt="" class="avatar">                      
-                   </div>
-                   <div class="chatName">
-                        <div>Elon Musk</div>
-                        <div class="messagePreview">Il razzo è pronto</div>
-                   </div>
-                </div>
-                <div class="chatPreview">
-                    <div class="imgBox">
-                        <img src="img/Elon_Musk_Royal_Society_(crop2).jpg" alt="" class="avatar">                      
-                   </div>
-                   <div class="chatName">
-                        <div>Elon Musk</div>
-                        <div class="messagePreview">Il razzo è pronto</div>
-                   </div>
-                </div>
-                <div class="chatPreview">
-                    <div class="imgBox">
-                        <img src="img/Elon_Musk_Royal_Society_(crop2).jpg" alt="" class="avatar">                      
-                   </div>
-                   <div class="chatName">
-                        <div>Elon Musk</div>
-                        <div class="messagePreview">Il razzo è pronto</div>
-                   </div>
-                </div>
-                <div class="chatPreview">
-                    <div class="imgBox">
-                        <img src="img/Elon_Musk_Royal_Society_(crop2).jpg" alt="" class="avatar">                      
-                   </div>
-                   <div class="chatName">
-                        <div>Elon Musk</div>
-                        <div class="messagePreview">Il razzo è pronto</div>
-                   </div>
-                </div>
-                <div class="chatPreview">
-                    <div class="imgBox">
-                        <img src="img/Elon_Musk_Royal_Society_(crop2).jpg" alt="" class="avatar">                      
-                   </div>
-                   <div class="chatName">
-                        <div>Elon Musk</div>
-                        <div class="messagePreview">Il razzo è pronto</div>
-                   </div>
-                </div>
-                <div class="chatPreview">
-                    <div class="imgBox">
-                        <img src="img/Elon_Musk_Royal_Society_(crop2).jpg" alt="" class="avatar">                      
-                   </div>
-                   <div class="chatName">
-                        <div>Elon Musk</div>
-                        <div class="messagePreview">Il razzo è pronto</div>
-                   </div>
-                </div>
-                <div class="chatPreview">
-                    <div class="imgBox">
-                        <img src="img/Elon_Musk_Royal_Society_(crop2).jpg" alt="" class="avatar">                      
-                   </div>
-                   <div class="chatName">
-                        <div>Elon Musk</div>
-                        <div class="messagePreview">Il razzo è pronto</div>
-                   </div>
-                </div>
-                <div class="chatPreview">
-                    <div class="imgBox">
-                        <img src="img/Elon_Musk_Royal_Society_(crop2).jpg" alt="" class="avatar">                      
-                   </div>
-                   <div class="chatName">
-                        <div>Elon Musk</div>
-                        <div class="messagePreview">Il razzo è pronto</div>
-                   </div>
-                </div>
-
-
-
                 
             </div>           
         </div>
 
+        <!-- Parte a destra -->
         <div class="containerRight">
             <div class="profileBox" id="specialProfileBox">
                 <div class="imgBox">
@@ -174,19 +96,30 @@
                 </div> 
             </div>
 
-            <div class="chat"></div>
+            <!-- Sezione principale di chat -->
+            <div class="chat">
+                <div class="boxSent" v-for="(obj, i) in contacts" >
+                    <div class="sentChat">
+                        {{ obj.messages.message }}                                     
+                    </div>
+                </div>
 
+                <!-- <div class="boxReceived">
+                    <div class="receivedChat">
+                        Bene grazie! Sto lavorando a SpaceX
+                    </div>
+                </div> -->
+                               
+            </div>
+
+            
+            <!-- sezione per scrivere messaggio -->
             <div class="chatBox">
                 <i class="fa-regular fa-face-smile"></i>
                 <input type="text" class="typeBox" placeholder="Scrivi un messaggio">
                 <i class="fa-solid fa-microphone"></i>
             </div>             
         </div>
-
-        
-
-
-
 
     </div>
 </body>

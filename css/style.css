@@ -1,7 +1,6 @@
 *{
     font-family: 'Roboto', sans-serif;
     font-weight: 500;
-
 }
 
 .containerBack{
@@ -153,6 +152,13 @@
     font-size: 15px;
 }
 
+.nameSection{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-right: 10px;
+}
+
 .messagePreview{
     font-weight: 400;
     font-size: 11px;
@@ -222,5 +228,42 @@ a:visited {
 
 a:hover {
     color: black;
+}
+
+.sentChat, .receivedChat{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    margin-top: auto;
+    margin-bottom: auto;
+    display: flex;
+    align-items: center;
+    border-radius: 10px;
+    background-color: #dcf8c6;
+    margin-right: 30px;
+    margin-left: 30px;
+    font-size: 15px;
+    font-weight: 400;
+    max-width: 350px;
+    padding: 10px;
+}
+
+.sentChat{
+    background-color: #dcf8c6;
+    right: 0;
+}
+
+.receivedChat{
+    background-color: white;
+    left: 10;
+}
+
+.boxSent, .boxReceived{
+    position: relative;
+    display: flex;
+    margin-bottom: 25px;
+    margin-top: 25px;
+    width: 100%;
+    height: 45px;
 }
 
