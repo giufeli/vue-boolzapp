@@ -162,7 +162,7 @@
 .messagePreview{
     font-weight: 400;
     font-size: 11px;
-    color: rgb(189, 189, 189);
+    color: rgb(163, 163, 163);
 }
 
 i{
@@ -267,3 +267,10 @@ a:hover {
     height: 45px;
 }
 
+.fa-face-smile:hover{
+    color: rgb(255, 191, 0);
+}
+
+.fa-microphone:hover{
+    color: rgb(14, 136, 224);
+}

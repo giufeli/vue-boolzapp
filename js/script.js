@@ -1,6 +1,7 @@
 new Vue({
     el: '#root',
     data: {
+        activeIndex: 0,
         contacts : [
                 {
                 name: 'Michele',
@@ -164,8 +165,21 @@ new Vue({
                         ],
                 },
         ],
-    }    
-})        
+        
+        
+    },
+    methods:{
+        modifyActiveIndex(index) {
+                this.activeIndex = index      
+        }
+    }
+             
+});
+
+
+
+
+
         
         
         

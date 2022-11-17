@@ -14,7 +14,7 @@
     <script src="js/script.js" defer></script>
 
     <style>
-        [v-clock]{
+        [v-cloak]{
             display: none;
         }
     </style>
@@ -62,7 +62,7 @@
             
             <!-- Lista chat -->
             <div class="listChat">              
-                <div class="chatPreview" v-for="(obj, i) in contacts" >
+                <div class="chatPreview" v-for="(obj, i) in contacts" @click="modifyActiveIndex(i)" >
                     <div class="imgBox">
                         <img src="img/Elon_Musk_Royal_Society_(crop2).jpg" alt="" class="avatar">                      
                    </div>
@@ -98,21 +98,21 @@
 
             <!-- Sezione principale di chat -->
             <div class="chat">
-                <div class="boxSent" v-for="(obj, i) in contacts" >
-                    <div class="sentChat">
-                        {{ obj.messages.message }}                                     
+                <div v-for="(obj, i) in contacts[activeIndex].messages">
+                    <div class="boxSent" v-if="obj.status === 'sent' ">
+                        <div class="sentChat" >
+                            {{ obj.message }}                                     
+                        </div>
+                    </div>
+                    <div class="boxReceived" v-if="obj.status === 'received' ">
+                        <div class="receivedChat" >
+                            {{ obj.message }}                                     
+                        </div>
                     </div>
                 </div>
-
-                <!-- <div class="boxReceived">
-                    <div class="receivedChat">
-                        Bene grazie! Sto lavorando a SpaceX
-                    </div>
-                </div> -->
-                               
+ 
             </div>
-
-            
+ 
             <!-- sezione per scrivere messaggio -->
             <div class="chatBox">
                 <i class="fa-regular fa-face-smile"></i>
