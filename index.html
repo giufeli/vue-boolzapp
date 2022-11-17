@@ -26,8 +26,8 @@
     <div class="containerBack">
         <div class="bannerBack"></div>
     </div>
-    <!-- Container Applicazione -->
-    <div class="container main" id="root" v-clock>
+    <!-- Main App -->
+    <div class="container main" id="root" v-cloak>
 
         <!-- Parte a sinistra -->
         <div class="containerLeft">
@@ -64,7 +64,7 @@
             <div class="listChat">              
                 <div class="chatPreview" v-for="(obj, i) in contacts" @click="modifyActiveIndex(i)" >
                     <div class="imgBox">
-                        <img src="img/Elon_Musk_Royal_Society_(crop2).jpg" alt="" class="avatar">                      
+                        <img :src="`img/${obj.avatar}`" alt="" class="avatar">                      
                    </div>
                    <div class="chatName">
                         <div class="nameSection">
@@ -80,11 +80,13 @@
 
         <!-- Parte a destra -->
         <div class="containerRight">
+
+            <!-- Profilo della chat aperta -->
             <div class="profileBox" id="specialProfileBox">
                 <div class="imgBox">
-                     <img src="img/Elon_Musk_Royal_Society_(crop2).jpg" alt="" class="avatar">
+                     <img :src="`img/${contacts[activeIndex].avatar}`" alt="" class="avatar">
                      <div>
-                        <div>Elon Musk</div>
+                        <div>{{ contacts[activeIndex].name }}</div>
                         <div class="messagePreview">Ultimo accesso oggi alle 17:30</div>
                      </div>
                      
@@ -96,7 +98,7 @@
                 </div> 
             </div>
 
-            <!-- Sezione principale di chat -->
+            <!-- Sezione principale chat -->
             <div class="chat">
                 <div v-for="(obj, i) in contacts[activeIndex].messages">
                     <div class="boxSent" v-if="obj.status === 'sent' ">
@@ -116,7 +118,7 @@
             <!-- sezione per scrivere messaggio -->
             <div class="chatBox">
                 <i class="fa-regular fa-face-smile"></i>
-                <input type="text" class="typeBox" placeholder="Scrivi un messaggio">
+                <input type="text" class="typeBox" placeholder="Scrivi un messaggio" @keyup.enter="addMessage[activeIndex]" v-model="newMessage.message">
                 <i class="fa-solid fa-microphone"></i>
             </div>             
         </div>

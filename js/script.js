@@ -5,7 +5,7 @@ new Vue({
         contacts : [
                 {
                 name: 'Michele',
-                avatar: '_1',
+                avatar: 'avatar_1.jpg',
                 visible: true,
                 messages: [
                         {
@@ -22,12 +22,13 @@ new Vue({
                         date: '10/01/2020 16:15:22',
                         message: 'Tutto fatto!',
                         status: 'received'
-                        }
+                        },
+                        
                         ],
                 },
                 {
                 name: 'Fabio',
-                avatar: '_2',
+                avatar: 'avatar_2.jpg',
                 visible: true,
                 messages: [
                         {
@@ -49,7 +50,7 @@ new Vue({
                 },
                 {
                 name: 'Samuele',
-                avatar: '_3',
+                avatar: 'avatar_3.jpg',
                 visible: true,
                 messages: [
                         {
@@ -71,7 +72,7 @@ new Vue({
                 },
                 {
                 name: 'Alessandro B.',
-                avatar: '_4',
+                avatar: 'avatar_4.jpg',
                 visible: true,
                 messages: [
                         {
@@ -88,7 +89,7 @@ new Vue({
                 },
                 {
                 name: 'Alessandro L.',
-                avatar: '_5',
+                avatar: 'avatar_5.jpg',
                 visible: true,
                 messages: [
                         {
@@ -105,7 +106,7 @@ new Vue({
                 },
                 {
                 name: 'Claudia',
-                avatar: '_6',
+                avatar: 'avatar_6.jpg',
                 visible: true,
                 messages: [
                         {
@@ -127,7 +128,7 @@ new Vue({
                 },
                 {
                 name: 'Federico',
-                avatar: '_7',
+                avatar: 'avatar_7.jpg',
                 visible: true,
                 messages: [
                         {
@@ -144,7 +145,7 @@ new Vue({
                 },
                 {
                 name: 'Davide',
-                avatar: '_8',
+                avatar: 'avatar_8.jpg',
                 visible: true,
                 messages: [
                         {
@@ -165,14 +166,35 @@ new Vue({
                         ],
                 },
         ],
-        
+
+        newMessage: {
+                message: '',
+                status: 'sent',
+        },
+
         
     },
     methods:{
         modifyActiveIndex(index) {
                 this.activeIndex = index      
-        }
-    }
+        },
+
+        addMessage(){
+                console.log(this.newMessage.message)
+        },
+
+        addMessage(index){
+                if(this.newMessage.message.trim()){
+                    this.newMessage.message = this.newMessage.message.trim()
+                    this.contacts(index).push({...this.newMessage})
+                    this.newMessage.message = ''
+                    console.log(this.contacts)
+                }
+                
+            },
+                
+        },
+    
              
 });
 
