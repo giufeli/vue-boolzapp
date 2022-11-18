@@ -55,14 +55,20 @@
             <div class="searchBox">
                 <div class="searchSection">
                     <i class="fa-solid fa-magnifying-glass" id="specialIcon"></i>
-                    <input type="text" class="typeSearch" placeholder="Cerca o inizia una nuova chat">
+
+                    <input type="text" 
+                    class="typeSearch" 
+                    placeholder="Cerca o inizia una nuova chat" 
+                    v-model="search"
+                    @keyup="chatResearch"
+                    >
                 </div>
                 
             </div>
             
             <!-- Lista chat -->
             <div class="listChat">              
-                <div class="chatPreview" v-for="(obj, i) in contacts" @click="modifyActiveIndex(i)" >
+                <div class="chatPreview" v-for="(obj, i) in contacts" @click="modifyActiveIndex(i)">
                     <div class="imgBox">
                         <img :src="`img/${obj.avatar}`" alt="" class="avatar">                      
                    </div>
@@ -118,7 +124,13 @@
             <!-- sezione per scrivere messaggio -->
             <div class="chatBox">
                 <i class="fa-regular fa-face-smile"></i>
-                <input type="text" class="typeBox" placeholder="Scrivi un messaggio" @keyup.enter="addMessage[activeIndex]" v-model="newMessage.message">
+                <input 
+                    type="text" 
+                    class="typeBox" 
+                    placeholder="Scrivi un messaggio" 
+                    @keyup.enter="addMessage" 
+                    v-model="newMessage"
+                    >
                 <i class="fa-solid fa-microphone"></i>
             </div>             
         </div>

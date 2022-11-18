@@ -6,7 +6,7 @@ new Vue({
                 {
                 name: 'Michele',
                 avatar: 'avatar_1.jpg',
-                visible: true,
+                visible: false,
                 messages: [
                         {
                         date: '10/01/2020 15:30:55',
@@ -167,12 +167,11 @@ new Vue({
                 },
         ],
 
-        newMessage: {
-                message: '',
-                status: 'sent',
-        },
+       
+        newMessage : [],
 
-        
+        search : [],
+
     },
     methods:{
         modifyActiveIndex(index) {
@@ -180,22 +179,33 @@ new Vue({
         },
 
         addMessage(){
-                console.log(this.newMessage.message)
+                this.contacts[this.activeIndex].messages.push({
+                        date: new Date().toISOString().replaceAll('-','/').replaceAll('T', '').split('.')[0],
+                        message: this.newMessage,
+                        status: 'sent'      
+                })
+                this.newMessage = '';
+                setTimeout(()=> {
+                        this.contacts[this.activeIndex].messages.push({
+                                date: new Date().toISOString().replaceAll('-','/').replaceAll('T', '').split('.')[0],
+                                message: 'Ok',
+                                status: 'received'      
+                        })
+                },1000)
+        }, 
+        
+        chatResearch(){
+                for(i = 0; i < this.contacts.lenght; i++){
+                        if(!this.contacts.toLowerCase().includes()(this.search.toLowerCase())){
+                                this.contacts = false;
+                        } else {
+                                this.contacts = true
+                        }
+                }
         },
 
-        addMessage(index){
-                if(this.newMessage.message.trim()){
-                    this.newMessage.message = this.newMessage.message.trim()
-                    this.contacts(index).push({...this.newMessage})
-                    this.newMessage.message = ''
-                    console.log(this.contacts)
-                }
-                
-            },
-                
         },
-    
-             
+       
 });
 
 

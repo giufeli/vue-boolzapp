@@ -246,6 +246,7 @@ a:hover {
     font-weight: 400;
     max-width: 350px;
     padding: 10px;
+    overflow-wrap: break-word;
 }
 
 .sentChat{
