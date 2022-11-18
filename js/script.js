@@ -195,11 +195,11 @@ new Vue({
         }, 
         
         chatResearch(){
-                for(i = 0; i < this.contacts.lenght; i++){
-                        if(!this.contacts.toLowerCase().includes()(this.search.toLowerCase())){
-                                this.contacts = false;
+                for(i = 0; i < this.contacts.length; i++){
+                        if(!this.contacts[i].name.toLowerCase().includes(this.search.toLowerCase())){
+                                this.contacts[i].visible = false;
                         } else {
-                                this.contacts = true
+                                this.contacts[i].visible = true
                         }
                 }
         },

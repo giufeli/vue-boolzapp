@@ -68,7 +68,7 @@
             
             <!-- Lista chat -->
             <div class="listChat">              
-                <div class="chatPreview" v-for="(obj, i) in contacts" @click="modifyActiveIndex(i)">
+                <div class="chatPreview" v-for="(obj, i) in contacts" @click="modifyActiveIndex(i)"  v-show="obj.visible">
                     <div class="imgBox">
                         <img :src="`img/${obj.avatar}`" alt="" class="avatar">                      
                    </div>
@@ -109,7 +109,8 @@
                 <div v-for="(obj, i) in contacts[activeIndex].messages">
                     <div class="boxSent" v-if="obj.status === 'sent' ">
                         <div class="sentChat" >
-                            {{ obj.message }}                                     
+                            {{ obj.message }}
+                            <!-- <i class="fa-solid fa-chevron-down"></i>                                    -->
                         </div>
                     </div>
                     <div class="boxReceived" v-if="obj.status === 'received' ">
