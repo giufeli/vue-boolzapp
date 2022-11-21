@@ -206,17 +206,10 @@ new Vue({
         },
 
 
-        dropdownMenu(){
-                dropdown = true
-        }
-
         },
        
 });
 
-//@click='dropdown = !dropdown'
-
-//v-show='dropdown'
 
 
         
