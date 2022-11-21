@@ -68,7 +68,12 @@
             
             <!-- Lista chat -->
             <div class="listChat">              
-                <div class="chatPreview" v-for="(obj, i) in contacts" @click="modifyActiveIndex(i)"  v-show="obj.visible">
+                <div 
+                class="chatPreview" 
+                v-for="(obj, i) in contacts" 
+                @click="modifyActiveIndex(i)"  
+                v-show="obj.visible"
+                >
                     <div class="imgBox">
                         <img :src="`img/${obj.avatar}`" alt="" class="avatar">                      
                    </div>
@@ -107,16 +112,27 @@
             <!-- Sezione principale chat -->
             <div class="chat">
                 <div v-for="(obj, i) in contacts[activeIndex].messages">
-                    <div class="boxSent" v-if="obj.status === 'sent' ">
-                        <div class="sentChat" >
+                    <div 
+                    class="boxSent" 
+                    v-if="obj.status === 'sent' "
+                    @click='dropdown = !dropdown'
+                    >
+                        <div class="sentChat">
                             {{ obj.message }}
-                            <!-- <i class="fa-solid fa-chevron-down"></i>                                    -->
+                            <i class="fa-solid fa-chevron-down" v-if="dropdown"></i>                                                            
                         </div>
+                        <div class="menuDropdown right" v-if="dropdown">Elimina messaggio</div>
                     </div>
-                    <div class="boxReceived" v-if="obj.status === 'received' ">
+                    <div 
+                    class="boxReceived" 
+                    v-if="obj.status === 'received' "
+                    @click='dropdown = !dropdown'
+                    >
                         <div class="receivedChat" >
-                            {{ obj.message }}                                     
+                            {{ obj.message }}
+                            <i class="fa-solid fa-chevron-down"  v-if="dropdown"></i>                                                                                              
                         </div>
+                        <div class="menuDropdown left" v-if="dropdown">Info messaggio</div>
                     </div>
                 </div>
  

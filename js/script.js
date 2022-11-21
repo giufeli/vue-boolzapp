@@ -2,6 +2,7 @@ new Vue({
     el: '#root',
     data: {
         activeIndex: 0,
+        dropdown: false,
         contacts : [
                 {
                 name: 'Michele',
@@ -204,12 +205,18 @@ new Vue({
                 }
         },
 
+
+        dropdownMenu(){
+                dropdown = true
+        }
+
         },
        
 });
 
+//@click='dropdown = !dropdown'
 
-
+//v-show='dropdown'
 
 
         

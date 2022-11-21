@@ -232,13 +232,11 @@ a:hover {
 
 .sentChat, .receivedChat{
     position: absolute;
-    top: 0;
-    bottom: 0;
     margin-top: auto;
     margin-bottom: auto;
     display: flex;
     align-items: center;
-    border-radius: 10px;
+    border-radius: 13px;
     background-color: #dcf8c6;
     margin-right: 30px;
     margin-left: 30px;
@@ -247,7 +245,34 @@ a:hover {
     max-width: 350px;
     padding: 10px;
     overflow-wrap: break-word;
+    cursor: pointer;
 }
+
+.menuDropdown{
+    position: absolute;
+    font-weight: 400;
+    font-size: 12px;
+    padding: 8px;;
+    z-index: 9999;
+    min-width: 130px;
+    text-align: center;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.menuDropdown.right{
+    right: 0;
+    margin-right: 30px;
+    margin-top: 45px;
+    background-color: white
+}
+.menuDropdown.left{
+    left: 0;
+    margin-top: 45px;
+    margin-left: 30px;
+    background-color: rgb(230, 230, 230)
+}
+
 
 .sentChat{
     background-color: #dcf8c6;
@@ -265,7 +290,7 @@ a:hover {
     margin-bottom: 25px;
     margin-top: 25px;
     width: 100%;
-    height: 45px;
+    height: 65px;
 }
 
 .fa-face-smile:hover{
@@ -276,6 +301,10 @@ a:hover {
     color: rgb(14, 136, 224);
 }
 
-/* .fa-chevron-down::before {
-    margin-left: 5px;
-} */
+.fa-chevron-down{
+    margin-left: 8px;
+    font-size: 13px;
+}
+
+
+
